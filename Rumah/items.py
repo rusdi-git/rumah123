@@ -11,4 +11,9 @@ import scrapy
 class RumahItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    price = scrapy.Field()
+    address = scrapy.Field()
+    # supplyImageUrls = scrapy.Field()
+    luastanah = scrapy.Field()
+    luasbangunan = scrapy.Field()
+    deskripsi = scrapy.Field()

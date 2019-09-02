@@ -8,4 +8,6 @@
 
 class RumahPipeline(object):
     def process_item(self, item, spider):
-        return item
+        if spider.name == 'rumah':
+            with open('result.txt','a') as file:
+                file.write(str(item))
