@@ -1,0 +1,51 @@
+facilities: ?
+isNegotiablePrice: x
+address: v
+coordinates: x
+timeEnd: x
+timeStart: x
+payment_methods: x
+period: ?
+price: x
+size: v
+supplyImageURLs: v
+supplyType: x
+title: x
+
+{
+  "facilities": [
+    "mungkin"
+  ],
+  "isNegotiablePrice": true,
+  "location": {
+    "address": "string",
+    "coordinates": [
+      0
+    ]
+  },
+  "operationalHours": [
+    {
+      "timeEnd": "string",
+      "timeStart": "string"
+    }
+  ],
+  "payment_methods": [
+    "cash"
+  ],
+  "prices": [
+    {
+      "period": "one_month",
+      "price": 0
+    }
+  ],
+  "size": {
+    "additionalInformation": "string",
+    "value": 0
+  },
+  "supplyImageURLs": [
+    "string"
+  ],
+  "supplyType": "room",
+  "title": "string",
+  "user_id": "string"
+}

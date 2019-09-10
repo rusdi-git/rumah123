@@ -6,6 +6,20 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from scrapy.http import HtmlResponse
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# options = webdriver.FirefoxOptions()
+# options.add_argument('--headless')
+# options.add_argument('--window-size=')
+options = Options()
+options.headless=True
+
+driver = webdriver.Firefox(options=options)
 
 
 class RumahSpiderMiddleware(object):
@@ -78,7 +92,15 @@ class RumahDownloaderMiddleware(object):
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
-        return None
+        if 'https://www.rumah123.com' not in request.url:
+            return None
+        driver.get(request.url)
+        # if 'https://www.rumah123.com/jual/bandung/gudang' not in request.url:
+        #     WebDriverWait(driver,5).until(
+        #         EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div[2]/div[2]/div[1]/div[1]/img'))
+        #     )
+        body = driver.page_source
+        return HtmlResponse(driver.current_url, body=body, encoding='utf-8', request=request)
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
